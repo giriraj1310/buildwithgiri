@@ -1,0 +1,20 @@
+const blogData = [
+    {
+      id: 1,
+      title: "Top 5 Mistakes International Students Make",
+      description: "Simple tips to avoid common pitfalls and thrive from day one.",
+    },
+    {
+      id: 2,
+      title: "How I Got My Job at Adobe",
+      description: "A transparent look into my journey from student to tech professional.",
+    },
+    {
+      id: 3,
+      title: "Finding Housing in Canada",
+      description: "Tactics I used to find safe and affordable housing as a newcomer.",
+    }
+  ];
+  
+  export default blogData;
+  
