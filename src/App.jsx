@@ -27,7 +27,7 @@
 //       <Element name="students"><Students /></Element>
 //       <Element name="blog"><Blog /></Element>
 //       <Element name="contact"><Contact /></Element>
-      
+
 //       <Element name="contact"><BackToTopButton /></Element>
 
 //       <footer className="text-center py-6 border-t mt-10 text-sm bg-white">
@@ -50,6 +50,9 @@ import Contact from "./sections/Contact";
 import Navbar from "./components/Navbar";
 import BackToTopButton from "./components/BackToTopButton";
 import BlogPost from "./pages/BlogPost";
+import { VerticalTimeline } from "./sections/CareerTimeline";
+
+
 import { Element } from "react-scroll";
 
 export default function App() {
@@ -69,9 +72,10 @@ export default function App() {
               <Element name="hero"><Hero /></Element>
               <Element name="about"><About /></Element>
               <Element name="career"><Career /></Element>
-              <Element name="students"><Students /></Element>
-              <Element name="blog"><Blog /></Element>
+              {/* <Element name="students"><Students /></Element> */}
+              {/* <Element name="blog"><Blog /></Element> */}
               <Element name="contact"><Contact /></Element>
+
               <BackToTopButton />
               <footer className="text-center py-6 border-t mt-10 text-sm bg-white">
                 <p>&copy; {new Date().getFullYear()} buildwithgiri.com — Made with ❤️ by Giri</p>
