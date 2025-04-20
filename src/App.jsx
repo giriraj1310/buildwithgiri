@@ -50,7 +50,7 @@ import Contact from "./sections/Contact";
 import Navbar from "./components/Navbar";
 import BackToTopButton from "./components/BackToTopButton";
 import BlogPost from "./pages/BlogPost";
-import { VerticalTimeline } from "./sections/CareerTimeline";
+import { Analytics } from "@vercel/analytics/react"
 
 
 import { Element } from "react-scroll";
