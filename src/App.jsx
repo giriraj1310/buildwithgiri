@@ -51,6 +51,8 @@ import Navbar from "./components/Navbar";
 import BackToTopButton from "./components/BackToTopButton";
 import BlogPost from "./pages/BlogPost";
 import { Analytics } from "@vercel/analytics/react"
+import GiriBotWidget from "./components/GiriBotWidget";
+
 
 
 import { Element } from "react-scroll";
@@ -76,7 +78,9 @@ export default function App() {
               {/* <Element name="blog"><Blog /></Element> */}
               <Element name="contact"><Contact /></Element>
 
+              <GiriBotWidget />
               <BackToTopButton />
+              
               <footer className="text-center py-6 border-t mt-10 text-sm bg-white">
                 <p>&copy; {new Date().getFullYear()} buildwithgiri.com — Made with ❤️ by Giri</p>
               </footer>

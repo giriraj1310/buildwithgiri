@@ -33,7 +33,7 @@ export default function Contact() {
       </p>
       <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 mt-6">
   <a
-    href="mailto:giriraj@example.com"
+    href="mailto:buildwithgiri@gmail.com"
     aria-label="Email"
     className="flex items-center gap-3 bg-blue-50 hover:bg-blue-100 transition px-5 py-3 rounded-xl shadow text-blue-700"
   >
@@ -51,7 +51,7 @@ export default function Contact() {
     <span className="text-sm font-medium">Connect on LinkedIn</span>
   </a>
   <a
-    href="https://twitter.com/yourhandle"
+    href="https://twitter.com/GirirajBhagat"
     target="_blank"
     rel="noopener noreferrer"
     aria-label="Twitter"

@@ -11,16 +11,16 @@ export default function Hero() {
         <a href="https://www.linkedin.com/in/girirajbhagat/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
           <FaLinkedin className="hover:text-blue-800 transition" />
         </a>
-        <a href="mailto:giriraj@example.com" aria-label="Email">
+        <a href="mailto:buildwithgiri@gmail.com" aria-label="Email">
           <FaEnvelope className="hover:text-blue-800 transition" />
         </a>
-        <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+        <a href="https://twitter.com/GirirajBhagat" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
           <FaTwitter className="hover:text-blue-800 transition" />
         </a>
       </div>
       <h2 className="text-4xl sm:text-5xl font-bold font-display mb-4" style={{ fontFamily: 'Playfair Display' }}>Made it. Now I’m helping you do the same.</h2>
       <p className="text-md sm:text-lg max-w-xl mb-6 text-gray-700">
-  I'm Giri — currently at Adobe, formerly Oracle and IBM. I help international students and early-career tech professionals break in, level up, and build confidence.
+  I'm Giri — currently at Adobe, formerly Oracle and IBM. I help students and early-career tech professionals break in, level up, and build confidence.
 </p>
 <div className="text-sm sm:text-base text-gray-700 mb-6 flex flex-col sm:flex-row gap-3 sm:gap-6 justify-center">
   <div className="flex items-center gap-2"><span className="text-green-600">✅</span> 3x IBM Internships</div>
