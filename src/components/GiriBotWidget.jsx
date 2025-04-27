@@ -89,7 +89,7 @@ export default function GiriBotWidget() {
       {/* Floating Robot Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-lg z-50"
+        className="fixed bottom-24 right-6 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-lg z-50"
         aria-label="Open GiriBot"
       >
         <FaRobot className="text-2xl" />
@@ -105,7 +105,19 @@ export default function GiriBotWidget() {
             transition={{ duration: 0.3 }}
             className="fixed bottom-20 right-6 w-80 bg-white rounded-xl shadow-lg p-4 z-50"
           >
-            <h4 className="text-lg font-bold mb-2">Ask GiriBot 🤖</h4>
+            {/* 👇 NEW close button container */}
+            <div className="flex justify-between items-center mb-2">
+              <h4 className="text-lg font-bold">Ask GiriBot 🤖</h4>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="text-gray-400 hover:text-gray-700 text-2xl font-bold"
+                aria-label="Close Chat"
+              >
+                ×
+              </button>
+            </div>
+
+            {/* Rest of your original chatbot content stays */}
             <input
               type="text"
               value={question}
