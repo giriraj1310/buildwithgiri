@@ -62,7 +62,7 @@ If someone wants to reach out, direct them to the Contact section or social link
       },
       body: JSON.stringify({
         model: "claude-haiku-4-5-20251001",
-        max_tokens: 300,
+        max_tokens: 150,
         system: GIRI_CONTEXT,
         messages: [{ role: "user", content: question }],
       }),
