@@ -96,11 +96,10 @@ export default function GiriBotWidget() {
                   className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
                 >
                   <div
-                    className={`max-w-[85%] px-3 py-2 rounded-lg text-sm leading-relaxed ${
-                      msg.role === "user"
+                    className={`max-w-[85%] px-3 py-2 rounded-lg text-sm leading-relaxed ${msg.role === "user"
                         ? "bg-blue-600 text-white rounded-br-none"
                         : "bg-gray-100 text-gray-800 rounded-bl-none"
-                    }`}
+                      }`}
                   >
                     {msg.role === "bot" ? (
                       <ReactMarkdown
@@ -110,47 +109,59 @@ export default function GiriBotWidget() {
                           ul: ({ children }) => <ul className="list-disc list-inside space-y-1 mt-1">{children}</ul>,
                           ol: ({ children }) => <ol className="list-decimal list-inside space-y-1 mt-1">{children}</ol>,
                           li: ({ children }) => <li>{children}</li>,
+                          a: ({ href, children }) => (
+
+                            <a 
+                              href={href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-blue-600 underline hover:text-blue-800 break-all"
+                            >
+                            { children }
+                            </a>
+                          ),
                         }}
                       >
-                        {msg.text}
-                      </ReactMarkdown>
-                    ) : (
-                      msg.text
+                  {msg.text}
+                </ReactMarkdown>
+              ) : (
+              msg.text
                     )}
-                  </div>
-                </div>
-              ))}
-              {loading && (
-                <div className="flex justify-start">
-                  <div className="bg-gray-100 text-gray-500 text-sm px-3 py-2 rounded-lg rounded-bl-none">
-                    Thinking...
-                  </div>
-                </div>
-              )}
-              <div ref={bottomRef} />
             </div>
-
-            {/* Input */}
-            <div className="px-4 py-3 border-t flex gap-2">
-              <input
-                type="text"
-                value={question}
-                onChange={(e) => setQuestion(e.target.value)}
-                onKeyDown={handleKeyDown}
-                placeholder="Ask something..."
-                className="flex-1 px-3 py-2 border rounded-lg text-sm outline-none focus:border-blue-400"
-              />
-              <button
-                onClick={handleAsk}
-                disabled={loading}
-                className="bg-blue-600 text-white px-3 py-2 rounded-lg text-sm hover:bg-blue-700 disabled:opacity-50 transition"
-              >
-                Send
-              </button>
+          </div>
+        ))}
+        {loading && (
+          <div className="flex justify-start">
+            <div className="bg-gray-100 text-gray-500 text-sm px-3 py-2 rounded-lg rounded-bl-none">
+              Thinking...
             </div>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
+        <div ref={bottomRef} />
+      </div>
+
+      {/* Input */}
+      <div className="px-4 py-3 border-t flex gap-2">
+        <input
+          type="text"
+          value={question}
+          onChange={(e) => setQuestion(e.target.value)}
+          onKeyDown={handleKeyDown}
+          placeholder="Ask something..."
+          className="flex-1 px-3 py-2 border rounded-lg text-sm outline-none focus:border-blue-400"
+        />
+        <button
+          onClick={handleAsk}
+          disabled={loading}
+          className="bg-blue-600 text-white px-3 py-2 rounded-lg text-sm hover:bg-blue-700 disabled:opacity-50 transition"
+        >
+          Send
+        </button>
+      </div>
+    </motion.div >
+        )
+}
+      </AnimatePresence >
     </>
   );
 }
