@@ -55,7 +55,7 @@ export default function Blog() {
     return <div className="p-6 text-center text-gray-400">No posts yet — check back soon!</div>;
 
   return (
-    <section id="blog" className="py-16 px-6 bg-gray-50">
+    <section id="blog" className="py-16 px-6 bg-white">
       <div className="max-w-4xl mx-auto">
         <h3 className="text-3xl font-display font-semibold mb-4 text-center">Blog</h3>
         <p className="text-lg text-gray-600 mb-10 text-center max-w-2xl mx-auto">
