@@ -248,7 +248,7 @@ export default function Footer() {
             </div>
 
             <div className="flex items-center gap-2">
-              <span>Toronto, ON</span>
+              <span>Ottawa, ON</span>
               <span className="mx-1">·</span>
               {/* Hidden gem #2 — subtle Konami hint */}
               <span
