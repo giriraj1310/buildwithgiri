@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        display: ["'Syne'", "sans-serif"],
+        display: ["'Space Grotesk'", "sans-serif"],
         body: ["'Plus Jakarta Sans'", "sans-serif"],
       },
     },

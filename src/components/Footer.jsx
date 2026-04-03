@@ -16,7 +16,7 @@ const QUOTES = [
   "Your accent is not a disadvantage. It's proof you speak more than one language.",
   "The offer letter doesn't care about your GPA. Your portfolio does.",
   "Every senior dev you admire was once the confused junior you are now.",
-  "Networking is not who you know — it's who thinks of you when an opportunity appears.",
+  "Networking is not who you know. It's who thinks of you when an opportunity appears.",
   "Canada didn't build itself. Neither will your career. Show up anyway.",
   "The best time to start was yesterday. The next best time is right now.",
   "Confidence isn't the absence of doubt. It's deciding to go anyway.",
@@ -101,8 +101,8 @@ export default function Footer() {
                 buildwithgiri
               </p>
               <p className="text-sm text-gray-500 mb-5 leading-relaxed">
-                Helping international students break into tech in Canada — one
-                conversation at a time.
+                Helping professionals break into tech and level up their careers,
+                one conversation at a time.
               </p>
 
               {/* Social icons */}
@@ -289,7 +289,7 @@ export default function Footer() {
                 curiosity of a great engineer. 🚀
               </p>
               <p className="text-xs text-gray-400 mb-6 font-mono">
-                ↑↑↓↓←→←→BA — Konami, 1986
+                ↑↑↓↓←→←→BA · Konami, 1986
               </p>
               <button
                 onClick={() => setEasterEgg(false)}

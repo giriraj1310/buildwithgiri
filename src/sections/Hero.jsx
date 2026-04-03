@@ -21,7 +21,7 @@ export default function Hero() {
         Made it. Now I'm helping you do the same.
       </h2>
       <p className="text-md sm:text-lg max-w-xl mb-6 text-gray-700 dark:text-gray-300">
-        I'm Giri — currently at Adobe, formerly Oracle and IBM. I help students
+        I'm Giri, currently at Adobe, formerly Oracle and IBM. I help students
         and professionals break in, level up, and build with confidence.
       </p>
 

@@ -15,7 +15,7 @@ export function VerticalTimeline() {
       <div className="text-center mb-10">
         <h3 className="text-3xl font-bold mb-4 text-gray-900 dark:text-white">Career & Education Timeline</h3>
         <p className="text-gray-700 dark:text-gray-300 max-w-xl mx-auto mb-4">
-          I've built my career through progressive roles at IBM, Oracle, and Adobe — combining
+          I've built my career through progressive roles at IBM, Oracle, and Adobe, combining
           technical depth with client-facing leadership. Here's a snapshot of my journey so far.
         </p>
       </div>

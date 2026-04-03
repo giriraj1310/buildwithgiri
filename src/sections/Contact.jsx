@@ -7,7 +7,7 @@ export default function Contact() {
       <h3 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Let's Connect</h3>
       <p className="max-w-2xl mx-auto text-lg text-gray-700 dark:text-gray-300 mb-10">
         Whether you've got a question about navigating your career, want feedback on your resume,
-        or just want to say hi — feel free to reach out. 👇
+        or just want to say hi. Feel free to reach out. 👇
       </p>
       <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6 mt-6">
         <a

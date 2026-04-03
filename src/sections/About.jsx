@@ -8,7 +8,7 @@ export default function About() {
         I landed in Canada with nothing but a backpack, a dream, and no network. The early days were
         filled with rejection, loneliness, and confusion. But I kept learning, growing, and saying yes
         to hard things. That led to 3 internships at IBM, a consulting role at Oracle, and now a
-        Support Services Manager role at Adobe — all while helping 10+ students navigate their own
+        Support Services Manager role at Adobe, all while helping 10+ students navigate their own
         journeys.
       </p>
       <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
