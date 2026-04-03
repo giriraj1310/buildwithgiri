@@ -6,6 +6,7 @@ import Career from "./sections/Career";
 import Blog from "./sections/Blog";
 import Contact from "./sections/Contact";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import BackToTopButton from "./components/BackToTopButton";
 import BlogPost from "./pages/BlogPost";
 import { Analytics } from "@vercel/analytics/react";
@@ -29,9 +30,7 @@ export default function App() {
       <GiriBotWidget />
       <BackToTopButton />
       <Analytics />
-      <footer className="text-center py-6 border-t mt-10 text-sm bg-white">
-        <p>&copy; {new Date().getFullYear()} buildwithgiri.com — Made with ❤️ by Giri</p>
-      </footer>
+      <Footer />
     </div>
   );
 
