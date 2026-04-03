@@ -17,7 +17,7 @@ export default function Hero() {
         </a>
       </div>
 
-      <h2 className="text-4xl sm:text-5xl font-bold font-display mb-4 text-gray-900 dark:text-white" style={{ fontFamily: "Playfair Display" }}>
+      <h2 className="text-4xl sm:text-5xl font-bold font-display mb-4 text-gray-900 dark:text-white">
         Made it. Now I'm helping you do the same.
       </h2>
       <p className="text-md sm:text-lg max-w-xl mb-6 text-gray-700 dark:text-gray-300">

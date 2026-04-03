@@ -12,7 +12,7 @@ export default function BlogPost() {
   const { Component, title, date, tags, coverImage, readTime } = post;
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-200 font-inter">
+    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-200 font-body">
       <div className="max-w-3xl mx-auto py-20 px-6">
         {/* Back link */}
         <Link

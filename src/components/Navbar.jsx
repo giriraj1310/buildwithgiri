@@ -1,6 +1,7 @@
 import React from "react";
 import { FaBars, FaSun, FaMoon } from "react-icons/fa";
 import { Link } from "react-scroll";
+import { Link as RouterLink } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 
 export default function Navbar({ isMobileMenuOpen, setMobileMenuOpen }) {
@@ -9,9 +10,13 @@ export default function Navbar({ isMobileMenuOpen, setMobileMenuOpen }) {
   return (
     <>
       <nav className="w-full px-6 py-4 flex justify-between items-center shadow-md bg-white dark:bg-gray-900 dark:shadow-gray-800/50 sticky top-0 z-50 transition-colors duration-200">
-        <h1 className="text-2xl font-bold tracking-tight text-blue-700 dark:text-blue-400">
+        <RouterLink
+          to="/"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="text-2xl font-bold font-display tracking-tight text-blue-700 dark:text-blue-400 hover:opacity-80 transition-opacity"
+        >
           buildwithgiri
-        </h1>
+        </RouterLink>
 
         <ul className="hidden md:flex gap-6 text-sm font-medium text-gray-700 dark:text-gray-300">
           <li>

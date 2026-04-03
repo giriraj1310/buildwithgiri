@@ -18,7 +18,7 @@ export default function App() {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const MainLayout = (
-    <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-inter transition-colors duration-200">
+    <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-body transition-colors duration-200">
       <Navbar
         isMobileMenuOpen={isMobileMenuOpen}
         setMobileMenuOpen={setMobileMenuOpen}
