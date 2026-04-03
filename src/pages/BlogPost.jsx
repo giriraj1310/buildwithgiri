@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { allPosts } from "../utils/posts";
+import GiscusComments from "../components/GiscusComments";
 
 export default function BlogPost() {
   const { id: slug } = useParams();
@@ -72,8 +73,11 @@ export default function BlogPost() {
         <Component />
       </div>
 
+      {/* Comments */}
+      <GiscusComments />
+
       {/* Bottom back link */}
-      <div className="mt-12 pt-6 border-t">
+      <div className="mt-10">
         <Link
           to="/#blog"
           className="inline-block px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-sm"
