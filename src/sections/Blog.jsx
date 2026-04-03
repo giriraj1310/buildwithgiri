@@ -1,99 +1,92 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useMemo } from "react";
+import Fuse from "fuse.js";
+import { allPosts, allTags } from "../utils/posts";
+import BlogCard from "../components/BlogCard";
 
-const HASHNODE_QUERY = `
-  query GetPosts {
-    publication(host: "buildwithgiri.hashnode.dev") {
-      posts(first: 9) {
-        edges {
-          node {
-            id
-            title
-            brief
-            slug
-            publishedAt
-            coverImage {
-              url
-            }
-            tags {
-              name
-            }
-          }
-        }
-      }
-    }
-  }
-`;
-
-async function fetchPosts() {
-  const res = await fetch("https://gql.hashnode.com", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ query: HASHNODE_QUERY }),
-  });
-  const data = await res.json();
-  return data.data.publication.posts.edges.map((e) => e.node);
-}
+const fuse = new Fuse(allPosts, {
+  keys: ["title", "excerpt", "tags"],
+  threshold: 0.35,
+});
 
 export default function Blog() {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [query, setQuery] = useState("");
+  const [selectedTag, setSelectedTag] = useState("");
 
-  useEffect(() => {
-    fetchPosts()
-      .then(setPosts)
-      .catch((err) => setError(err.message))
-      .finally(() => setLoading(false));
-  }, []);
-
-  if (loading)
-    return <div className="p-6 text-center text-gray-500">Loading posts...</div>;
-  if (error)
-    return <div className="p-6 text-center text-red-500">{error}</div>;
-  if (posts.length === 0)
-    return <div className="p-6 text-center text-gray-400">No posts yet — check back soon!</div>;
+  const filtered = useMemo(() => {
+    let posts = query
+      ? fuse.search(query).map((r) => r.item)
+      : allPosts;
+    if (selectedTag) {
+      posts = posts.filter((p) => p.tags?.includes(selectedTag));
+    }
+    return posts;
+  }, [query, selectedTag]);
 
   return (
     <section id="blog" className="py-16 px-6 bg-white">
-      <div className="max-w-4xl mx-auto">
-        <h3 className="text-3xl font-display font-semibold mb-4 text-center">Blog</h3>
-        <p className="text-lg text-gray-600 mb-10 text-center max-w-2xl mx-auto">
-          Real stories, career lessons, and advice for international students navigating tech in Canada.
+      <div className="max-w-5xl mx-auto">
+        <h3 className="text-3xl font-display font-semibold mb-4 text-center">
+          Blog
+        </h3>
+        <p className="text-lg text-gray-600 mb-8 text-center max-w-2xl mx-auto">
+          Real stories, career lessons, and advice for international students
+          navigating tech in Canada.
         </p>
-        <div className="grid md:grid-cols-3 gap-6">
-          {posts.map((post) => (
-            <Link
-              to={`/blog/${post.slug}`}
-              key={post.id}
-              className="block bg-white rounded-xl shadow hover:shadow-lg transition hover:scale-[1.02] overflow-hidden text-left"
-            >
-              {post.coverImage?.url && (
-                <img
-                  src={post.coverImage.url}
-                  alt={post.title}
-                  className="w-full h-40 object-cover"
-                />
-              )}
-              <div className="p-4">
-                <h4 className="font-bold text-base mb-2 leading-snug">{post.title}</h4>
-                <p className="text-sm text-gray-500 mb-3 line-clamp-2">{post.brief}</p>
-                <div className="flex items-center justify-between">
-                  <span className="text-xs text-gray-400">
-                    {new Date(post.publishedAt).toLocaleDateString("en-US", {
-                      month: "short", day: "numeric", year: "numeric"
-                    })}
-                  </span>
-                  {post.tags?.[0] && (
-                    <span className="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">
-                      #{post.tags[0].name}
-                    </span>
-                  )}
-                </div>
-              </div>
-            </Link>
-          ))}
+
+        {/* Search */}
+        <div className="flex justify-center mb-6">
+          <input
+            type="text"
+            placeholder="Search posts..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            className="w-full max-w-sm px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+          />
         </div>
+
+        {/* Tag filter */}
+        {allTags.length > 0 && (
+          <div className="flex flex-wrap justify-center gap-2 mb-8">
+            <button
+              onClick={() => setSelectedTag("")}
+              className={`text-xs px-3 py-1 rounded-full border transition ${
+                !selectedTag
+                  ? "bg-blue-600 text-white border-blue-600"
+                  : "border-gray-300 text-gray-600 hover:border-blue-400"
+              }`}
+            >
+              All
+            </button>
+            {allTags.map((tag) => (
+              <button
+                key={tag}
+                onClick={() => setSelectedTag(tag === selectedTag ? "" : tag)}
+                className={`text-xs px-3 py-1 rounded-full border transition ${
+                  selectedTag === tag
+                    ? "bg-blue-600 text-white border-blue-600"
+                    : "border-gray-300 text-gray-600 hover:border-blue-400"
+                }`}
+              >
+                #{tag}
+              </button>
+            ))}
+          </div>
+        )}
+
+        {/* Post count */}
+        <p className="text-sm text-gray-400 text-center mb-6">
+          {filtered.length} {filtered.length === 1 ? "post" : "posts"}
+        </p>
+
+        {filtered.length === 0 ? (
+          <p className="text-center text-gray-400 py-12">No posts found.</p>
+        ) : (
+          <div className="grid md:grid-cols-3 gap-6">
+            {filtered.map((post) => (
+              <BlogCard key={post.slug} post={post} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

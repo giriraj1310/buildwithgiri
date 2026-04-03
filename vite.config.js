@@ -1,20 +1,24 @@
-// vite.config.js
-
 import { defineConfig } from 'vite';
+import mdx from '@mdx-js/rollup';
 import react from '@vitejs/plugin-react';
-import path from 'path';
-
-// export default defineConfig({
-//   plugins: [react()],
-//   resolve: {
-//     alias: {
-//       '@': path.resolve(__dirname, './src'),
-//     },
-//   },
-// });
+import remarkFrontmatter from 'remark-frontmatter';
+import remarkMdxFrontmatter from 'remark-mdx-frontmatter';
+import remarkGfm from 'remark-gfm';
+import rehypeHighlight from 'rehype-highlight';
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    // MDX must come before React plugin
+    mdx({
+      remarkPlugins: [
+        remarkFrontmatter,
+        [remarkMdxFrontmatter, { name: 'frontmatter' }],
+        remarkGfm,
+      ],
+      rehypePlugins: [rehypeHighlight],
+    }),
+    react(),
+  ],
   server: {
     hmr: {
       overlay: false,
