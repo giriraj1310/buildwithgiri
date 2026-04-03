@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-scroll";
+import { Link as RouterLink } from "react-router-dom";
 import { FaLinkedin, FaTwitter, FaEnvelope, FaHeart } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -174,6 +175,11 @@ export default function Footer() {
                     </Link>
                   </li>
                 ))}
+                <li>
+                  <RouterLink to="/now" className="hover:text-white transition">
+                    Now
+                  </RouterLink>
+                </li>
               </ul>
             </div>
 
