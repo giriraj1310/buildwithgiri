@@ -7,7 +7,7 @@ import Giscus from "@giscus/react";
 // 3. Visit https://giscus.app → enter "giriraj1310/buildwithgiri" → copy the categoryId
 // 4. Replace PASTE_CATEGORY_ID_HERE below with the value from giscus.app
 
-const CATEGORY_ID = "PASTE_CATEGORY_ID_HERE";
+const CATEGORY_ID = "DIC_kwDOOcrIIs4C57Lg";
 
 export default function GiscusComments() {
   if (CATEGORY_ID === "PASTE_CATEGORY_ID_HERE") {
