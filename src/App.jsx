@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "./context/ThemeContext";
 import Hero from "./sections/Hero";
 import About from "./sections/About";
 import Career from "./sections/Career";
@@ -17,7 +18,7 @@ export default function App() {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const MainLayout = (
-    <div className="min-h-screen bg-white text-gray-800 font-inter">
+    <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-inter transition-colors duration-200">
       <Navbar
         isMobileMenuOpen={isMobileMenuOpen}
         setMobileMenuOpen={setMobileMenuOpen}
@@ -35,11 +36,13 @@ export default function App() {
   );
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={MainLayout} />
-        <Route path="/blog/:id" element={<BlogPost />} />
-      </Routes>
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={MainLayout} />
+          <Route path="/blog/:id" element={<BlogPost />} />
+        </Routes>
+      </Router>
+    </ThemeProvider>
   );
 }

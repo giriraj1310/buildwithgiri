@@ -29,6 +29,15 @@
     <meta property="twitter:title" content="Build with Giri – Personal Branding & Student Resources" />
     <meta property="twitter:description" content="Giriraj's personal site for professional insights, tech journey, and resources for international students in Canada." />
     <meta property="twitter:image" content="/preview-img.png" />
+    <!-- Dark mode: apply class before React loads to prevent flash -->
+    <script>
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        }
+      } catch(e) {}
+    </script>
   </head>
 
   <body>

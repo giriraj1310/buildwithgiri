@@ -35,7 +35,6 @@ export default function GiriBotWidget() {
       });
 
       const data = await response.json();
-
       setMessages((prev) => [
         ...prev,
         {
@@ -74,15 +73,15 @@ export default function GiriBotWidget() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 50 }}
             transition={{ duration: 0.3 }}
-            className="fixed bottom-20 right-6 w-80 bg-white rounded-xl shadow-xl z-50 flex flex-col"
+            className="fixed bottom-20 right-6 w-80 bg-white dark:bg-gray-800 rounded-xl shadow-xl dark:shadow-gray-900/60 z-50 flex flex-col border border-transparent dark:border-gray-700"
             style={{ height: "420px" }}
           >
             {/* Header */}
-            <div className="flex justify-between items-center px-4 py-3 border-b">
-              <h4 className="text-sm font-bold">Ask GiriBot 🤖</h4>
+            <div className="flex justify-between items-center px-4 py-3 border-b border-gray-200 dark:border-gray-700">
+              <h4 className="text-sm font-bold text-gray-800 dark:text-white">Ask GiriBot 🤖</h4>
               <button
                 onClick={() => setIsOpen(false)}
-                className="text-gray-400 hover:text-gray-700 text-xl font-bold"
+                className="text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 text-xl font-bold transition"
               >
                 ×
               </button>
@@ -91,15 +90,13 @@ export default function GiriBotWidget() {
             {/* Messages */}
             <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3">
               {messages.map((msg, i) => (
-                <div
-                  key={i}
-                  className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
-                >
+                <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
                   <div
-                    className={`max-w-[85%] px-3 py-2 rounded-lg text-sm leading-relaxed ${msg.role === "user"
+                    className={`max-w-[85%] px-3 py-2 rounded-lg text-sm leading-relaxed ${
+                      msg.role === "user"
                         ? "bg-blue-600 text-white rounded-br-none"
-                        : "bg-gray-100 text-gray-800 rounded-bl-none"
-                      }`}
+                        : "bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-bl-none"
+                    }`}
                   >
                     {msg.role === "bot" ? (
                       <ReactMarkdown
@@ -110,58 +107,56 @@ export default function GiriBotWidget() {
                           ol: ({ children }) => <ol className="list-decimal list-inside space-y-1 mt-1">{children}</ol>,
                           li: ({ children }) => <li>{children}</li>,
                           a: ({ href, children }) => (
-
-                            <a 
+                            <a
                               href={href}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-blue-600 underline hover:text-blue-800 break-all"
+                              className="text-blue-600 dark:text-blue-400 underline hover:text-blue-800 dark:hover:text-blue-300 break-all"
                             >
-                            { children }
+                              {children}
                             </a>
                           ),
                         }}
                       >
-                  {msg.text}
-                </ReactMarkdown>
-              ) : (
-              msg.text
+                        {msg.text}
+                      </ReactMarkdown>
+                    ) : (
+                      msg.text
                     )}
+                  </div>
+                </div>
+              ))}
+              {loading && (
+                <div className="flex justify-start">
+                  <div className="bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 text-sm px-3 py-2 rounded-lg rounded-bl-none">
+                    Thinking...
+                  </div>
+                </div>
+              )}
+              <div ref={bottomRef} />
             </div>
-          </div>
-        ))}
-        {loading && (
-          <div className="flex justify-start">
-            <div className="bg-gray-100 text-gray-500 text-sm px-3 py-2 rounded-lg rounded-bl-none">
-              Thinking...
-            </div>
-          </div>
-        )}
-        <div ref={bottomRef} />
-      </div>
 
-      {/* Input */}
-      <div className="px-4 py-3 border-t flex gap-2">
-        <input
-          type="text"
-          value={question}
-          onChange={(e) => setQuestion(e.target.value)}
-          onKeyDown={handleKeyDown}
-          placeholder="Ask something..."
-          className="flex-1 px-3 py-2 border rounded-lg text-sm outline-none focus:border-blue-400"
-        />
-        <button
-          onClick={handleAsk}
-          disabled={loading}
-          className="bg-blue-600 text-white px-3 py-2 rounded-lg text-sm hover:bg-blue-700 disabled:opacity-50 transition"
-        >
-          Send
-        </button>
-      </div>
-    </motion.div >
-        )
-}
-      </AnimatePresence >
+            {/* Input */}
+            <div className="px-4 py-3 border-t border-gray-200 dark:border-gray-700 flex gap-2">
+              <input
+                type="text"
+                value={question}
+                onChange={(e) => setQuestion(e.target.value)}
+                onKeyDown={handleKeyDown}
+                placeholder="Ask something..."
+                className="flex-1 px-3 py-2 border border-gray-200 dark:border-gray-600 rounded-lg text-sm outline-none focus:border-blue-400 bg-white dark:bg-gray-700 text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 transition-colors"
+              />
+              <button
+                onClick={handleAsk}
+                disabled={loading}
+                className="bg-blue-600 text-white px-3 py-2 rounded-lg text-sm hover:bg-blue-700 disabled:opacity-50 transition"
+              >
+                Send
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

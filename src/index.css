@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100;
+  }
+}
+
+/* ── Syntax highlighting: dark mode overrides for highlight.js github theme ── */
+.dark .hljs {
+  background: #1e293b !important;
+  color: #e2e8f0;
+}
+.dark .hljs-keyword,
+.dark .hljs-selector-tag,
+.dark .hljs-title,
+.dark .hljs-section { color: #93c5fd; }
+.dark .hljs-string,
+.dark .hljs-attr { color: #86efac; }
+.dark .hljs-comment,
+.dark .hljs-quote { color: #6b7280; font-style: italic; }
+.dark .hljs-number,
+.dark .hljs-literal,
+.dark .hljs-variable { color: #fda4af; }
+.dark .hljs-built_in,
+.dark .hljs-name { color: #fcd34d; }
+.dark .hljs-title.function_ { color: #c4b5fd; }
+.dark .hljs-addition { color: #86efac; background: #14532d33; }
+.dark .hljs-deletion { color: #fca5a5; background: #7f1d1d33; }
