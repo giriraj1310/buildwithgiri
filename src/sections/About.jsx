@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const YEAR_STARTED = 2016;
+const YEAR_IN_TECH = 2018;
 
 const milestones = [
   { year: "2016", label: "Moved to Canada from Gujarat, India" },
@@ -14,6 +15,7 @@ const milestones = [
 
 export default function About() {
   const yearsExp = new Date().getFullYear() - YEAR_STARTED;
+  const yearsInTech = new Date().getFullYear() - YEAR_IN_TECH;
 
   return (
     <section className="py-24 px-6 bg-white dark:bg-gray-900 transition-colors duration-200">
@@ -58,7 +60,7 @@ export default function About() {
             {/* Stat pills */}
             <div className="flex flex-wrap gap-3 pt-4">
               {[
-                { n: `${yearsExp}+`, label: "years in tech" },
+                { n: `${yearsInTech}+`, label: "years in tech" },
                 { n: "3x", label: "IBM intern" },
                 { n: "10+", label: "mentorship calls" },
                 { n: "🇮🇳→🇨🇦", label: "Gujarat to Ottawa" },
