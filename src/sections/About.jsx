@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const YEAR_STARTED = 2018;
+const YEAR_STARTED = 2016;
 
 const milestones = [
   { year: "2016", label: "Moved to Canada from Gujarat, India" },
