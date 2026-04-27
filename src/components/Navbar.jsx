@@ -1,8 +1,7 @@
 import React from "react";
-import { FaBars, FaSun, FaMoon, FaTimes } from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-scroll";
 import { Link as RouterLink, useLocation } from "react-router-dom";
-import { useTheme } from "../context/ThemeContext";
 
 const SCROLL_LINKS = [
   { to: "about", label: "About" },
@@ -12,7 +11,6 @@ const SCROLL_LINKS = [
 ];
 
 export default function Navbar({ isMobileMenuOpen, setMobileMenuOpen }) {
-  const { isDark, toggle } = useTheme();
   const { pathname } = useLocation();
   const isHome = pathname === "/";
 
@@ -69,13 +67,6 @@ export default function Navbar({ isMobileMenuOpen, setMobileMenuOpen }) {
 
         {/* Right actions */}
         <div className="flex items-center gap-2">
-          <button
-            onClick={toggle}
-            aria-label="Toggle dark mode"
-            className="w-8 h-8 flex items-center justify-center rounded-lg text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
-          >
-            {isDark ? <FaSun /> : <FaMoon />}
-          </button>
           <button
             onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden w-8 h-8 flex items-center justify-center rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition"

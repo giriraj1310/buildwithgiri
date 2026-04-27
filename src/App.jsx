@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { ThemeProvider } from "./context/ThemeContext";
 import Hero from "./sections/Hero";
 import About from "./sections/About";
 import Career from "./sections/Career";
@@ -39,14 +38,12 @@ export default function App() {
   );
 
   return (
-    <ThemeProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={MainLayout} />
-          <Route path="/blog/:id" element={<BlogPost />} />
-          <Route path="/now" element={<Now />} />
-        </Routes>
-      </Router>
-    </ThemeProvider>
+    <Router>
+      <Routes>
+        <Route path="/" element={MainLayout} />
+        <Route path="/blog/:id" element={<BlogPost />} />
+        <Route path="/now" element={<Now />} />
+      </Routes>
+    </Router>
   );
 }

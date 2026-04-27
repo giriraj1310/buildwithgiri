@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <!-- Primary Meta Tags -->
     <meta charset="UTF-8" />
@@ -32,15 +32,6 @@
     <meta property="twitter:title" content="Build with Giri – Career, Tech & Personal Growth" />
     <meta property="twitter:description" content="Giriraj's personal site sharing career reflections, tech journey, and lessons from working in the industry." />
     <meta property="twitter:image" content="/preview-img.png" />
-    <!-- Dark mode: apply class before React loads to prevent flash -->
-    <script>
-      try {
-        var t = localStorage.getItem('theme');
-        if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-          document.documentElement.classList.add('dark');
-        }
-      } catch(e) {}
-    </script>
   </head>
 
   <body>
