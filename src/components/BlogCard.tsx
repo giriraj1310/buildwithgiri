@@ -1,7 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import type { Post } from "../types";
 
-export default function BlogCard({ post }) {
+interface BlogCardProps {
+  post: Post;
+}
+
+export default function BlogCard({ post }: BlogCardProps) {
   const { slug, title, excerpt, date, tags, coverImage, readTime } = post;
 
   return (

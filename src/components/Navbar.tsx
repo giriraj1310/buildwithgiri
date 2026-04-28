@@ -10,7 +10,12 @@ const SCROLL_LINKS = [
   { to: "contact", label: "Contact" },
 ];
 
-export default function Navbar({ isMobileMenuOpen, setMobileMenuOpen }) {
+interface NavbarProps {
+  isMobileMenuOpen: boolean;
+  setMobileMenuOpen: (open: boolean) => void;
+}
+
+export default function Navbar({ isMobileMenuOpen, setMobileMenuOpen }: NavbarProps) {
   const { pathname } = useLocation();
   const isHome = pathname === "/";
 

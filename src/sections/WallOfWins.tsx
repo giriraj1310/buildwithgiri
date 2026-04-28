@@ -1,8 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { wins } from "../data/wins";
+import type { WinCategory } from "../types";
 
-const categoryColor = {
+const categoryColor: Record<WinCategory, string> = {
   "first-job": "bg-green-900/30 text-green-400 border-green-800/40",
   "internship": "bg-blue-900/30 text-blue-400 border-blue-800/40",
   "promotion": "bg-purple-900/30 text-purple-400 border-purple-800/40",
@@ -10,7 +11,7 @@ const categoryColor = {
   "pivot": "bg-pink-900/30 text-pink-400 border-pink-800/40",
 };
 
-const categoryLabel = {
+const categoryLabel: Record<WinCategory, string> = {
   "first-job": "First job",
   "internship": "Internship",
   "promotion": "Promotion",

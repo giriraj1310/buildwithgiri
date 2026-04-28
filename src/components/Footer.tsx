@@ -63,7 +63,7 @@ export default function Footer() {
 
   // Konami code listener
   useEffect(() => {
-    const handler = (e) => {
+    const handler = (e: KeyboardEvent) => {
       if (e.key === KONAMI[konamiIndex]) {
         const next = konamiIndex + 1;
         if (next === KONAMI.length) {

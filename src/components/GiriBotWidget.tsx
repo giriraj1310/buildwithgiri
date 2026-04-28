@@ -3,17 +3,22 @@ import { FaRobot } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 
+interface Message {
+  role: "user" | "bot";
+  text: string;
+}
+
 export default function GiriBotWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [question, setQuestion] = useState("");
-  const [messages, setMessages] = useState([
+  const [messages, setMessages] = useState<Message[]>([
     {
       role: "bot",
       text: "Hi! I'm GiriBot 👋 Ask me anything about Giri's career, experience, or how he can help you.",
     },
   ]);
   const [loading, setLoading] = useState(false);
-  const bottomRef = useRef(null);
+  const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -52,7 +57,7 @@ export default function GiriBotWidget() {
     }
   };
 
-  const handleKeyDown = (e) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") handleAsk();
   };
 

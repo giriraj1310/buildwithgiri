@@ -1,8 +1,9 @@
+import type { Win } from '../types';
+
 // Wall of Wins — update these with real wins from people you've mentored.
 // Each entry: initials, name, flag emoji, achievement headline, company/outcome, quote, category.
-// Categories: "first-job" | "promotion" | "internship" | "offer" | "pivot"
 
-export const wins = [
+export const wins: Win[] = [
   {
     id: 1,
     initials: "PS",
