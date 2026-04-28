@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "node scripts/generate-posts-meta.js && vite build",
     "preview": "vite preview"
   },
   "dependencies": {

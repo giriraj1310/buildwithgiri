@@ -1,15 +1,76 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
+import { FaLinkedin, FaTwitter, FaLink, FaCheck } from "react-icons/fa";
 import { allPosts } from "../utils/posts";
 import GiscusComments from "../components/GiscusComments";
+
+function ShareButtons({ title, slug }: { title: string; slug: string }) {
+  const [copied, setCopied] = useState(false);
+  const url = `https://buildwithgiri.vercel.app/blog/${slug}`;
+
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(url);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <div className="flex items-center gap-3">
+      <span className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wide font-medium">
+        Share
+      </span>
+      <a
+        href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Share on LinkedIn"
+        className="text-gray-400 hover:text-blue-500 transition"
+      >
+        <FaLinkedin className="text-lg" />
+      </a>
+      <a
+        href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Share on Twitter / X"
+        className="text-gray-400 hover:text-sky-400 transition"
+      >
+        <FaTwitter className="text-lg" />
+      </a>
+      <button
+        onClick={handleCopy}
+        aria-label="Copy link"
+        className="text-gray-400 hover:text-green-400 transition flex items-center gap-1"
+      >
+        {copied ? (
+          <>
+            <FaCheck className="text-green-400 text-sm" />
+            <span className="text-xs text-green-400">Copied!</span>
+          </>
+        ) : (
+          <FaLink className="text-lg" />
+        )}
+      </button>
+    </div>
+  );
+}
 
 export default function BlogPost() {
   const { id: slug } = useParams();
   const post = allPosts.find((p) => p.slug === slug);
 
+  useEffect(() => {
+    if (post) {
+      document.title = `${post.title} | Build with Giri`;
+    }
+    return () => {
+      document.title = "Build with Giri – Career, Tech & Personal Growth";
+    };
+  }, [post]);
+
   if (!post) return <Navigate to="/" replace />;
 
-  const { Component, title, date, tags, coverImage, readTime } = post;
+  const { Component, title, date, tags, coverImage, readTime, slug: postSlug } = post;
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-200 font-body">
@@ -36,23 +97,26 @@ export default function BlogPost() {
           {title}
         </h1>
 
-        {/* Meta */}
-        <div className="flex flex-wrap items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mb-4">
-          <span>By Giri</span>
-          <span>•</span>
-          <span>
-            {new Date(date).toLocaleDateString("en-US", {
-              month: "long",
-              day: "numeric",
-              year: "numeric",
-            })}
-          </span>
-          {readTime && (
-            <>
-              <span>•</span>
-              <span>{readTime}</span>
-            </>
-          )}
+        {/* Meta row */}
+        <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
+          <div className="flex flex-wrap items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+            <span>By Giri</span>
+            <span>•</span>
+            <span>
+              {new Date(date).toLocaleDateString("en-US", {
+                month: "long",
+                day: "numeric",
+                year: "numeric",
+              })}
+            </span>
+            {readTime && (
+              <>
+                <span>•</span>
+                <span>{readTime}</span>
+              </>
+            )}
+          </div>
+          <ShareButtons title={title} slug={postSlug} />
         </div>
 
         {/* Tags */}
@@ -72,6 +136,11 @@ export default function BlogPost() {
         {/* MDX Content */}
         <div className="prose prose-lg dark:prose-invert max-w-none text-gray-700 dark:text-gray-300">
           <Component />
+        </div>
+
+        {/* Share again at the bottom */}
+        <div className="mt-10 pt-6 border-t border-gray-200 dark:border-gray-700">
+          <ShareButtons title={title} slug={postSlug} />
         </div>
 
         {/* Comments */}
